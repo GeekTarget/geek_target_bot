@@ -1,6 +1,7 @@
 import base64
 import requests
 from bs4 import BeautifulSoup
+import lxml
 
 Id = '402480'
 HEADERS = {
