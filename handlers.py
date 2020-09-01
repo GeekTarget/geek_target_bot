@@ -104,7 +104,7 @@ async def habr_get():
     while True:
         habr_subs = set()
         for s in base.show_subscribers():
-            if 'Habr-IT blog👨‍💻' in base.show_subs(s[0]):
+            if 'Habr-IT blog💻' in base.show_subs(s[0]):
                 habr_subs.add(s[0])
         id = habr.get_id()
         if habr.get_file_id('habr.txt') == id:
