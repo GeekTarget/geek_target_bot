@@ -1,7 +1,7 @@
 import base64
 import requests
 from bs4 import BeautifulSoup
-import lxml
+import html5lib
 
 Id = '402480'
 HEADERS = {
@@ -41,7 +41,7 @@ def decrypt_url(data: str, key: str) -> str:
 def get_main():
     global r
     r = requests.get('https://ru.sefon.cc/news/', headers=HEADERS)
-    soup = BeautifulSoup(r.text, 'lxml')
+    soup = BeautifulSoup(r.text, 'html5lib')
     new_music = soup.find('div class_="b_list_mp3s _ "').find('div', class_='mp3')
     return new_music
 
