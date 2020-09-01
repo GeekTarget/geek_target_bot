@@ -1,6 +1,5 @@
 aiogram
 lxml
-selenium
 altgraph==0.17
 beautifulsoup4==4.9.0
 certifi==2019.11.28
