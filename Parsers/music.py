@@ -1,8 +1,13 @@
 import base64
 import requests
 from bs4 import BeautifulSoup
-import html5lib
+from selenium import webdriver
+import lxml
 
+
+options = webdriver.ChromeOptions()
+options.add_argument('--headless')
+driver = webdriver.Chrome(chrome_options=options)
 Id = '402480'
 HEADERS = {
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
@@ -41,7 +46,9 @@ def decrypt_url(data: str, key: str) -> str:
 def get_main():
     global r
     r = requests.get('https://ru.sefon.cc/news/', headers=HEADERS)
-    soup = BeautifulSoup(r.text, 'html5lib')
+    driver.get('https://ru.sefon.cc/news/')
+    html = driver.page_source
+    soup = BeautifulSoup(html, 'lxml')
     new_music = soup.find('div class_="b_list_mp3s _ "').find('div', class_='mp3')
     return new_music
 
