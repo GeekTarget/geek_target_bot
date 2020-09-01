@@ -7,17 +7,8 @@ future==0.18.2
 geojson==2.5.0
 idna==2.9
 pefile==2019.4.18
-PyInstaller==3.6
-pyowm==2.10.0
-pypiwin32==223
-PyQt5==5.15.0
-PyQt5-sip==12.8.0
-PySide2==5.15.0
 PySocks==1.7.1
 pyTelegramBotAPI==3.6.7
-pyttsx3==2.87
-pywin32==228
-pywin32-ctypes==0.2.0
 requests==2.23.0
 shiboken2==5.15.0
 six==1.14.0
