@@ -40,14 +40,14 @@ def decrypt_url(data: str, key: str) -> str:
 def get_main():
     global r
     r = requests.get('https://ru.sefon.cc/news/', headers=HEADERS)
-    soup = BeautifulSoup(r.text, 'html.parser')
+    soup = BeautifulSoup(r.text, 'lxml')
     new_music = soup.find('div', class_="b_list_mp3s _ ").find('div', class_='mp3')
     return new_music
 
 
 def get_content():
     music = get_main()
-    root = BeautifulSoup(r.content, 'lxml')
+    root = BeautifulSoup(r.content, 'html.parser')
     data = root.select('.url_protected')[0]['data-url']
     key = root.select('.url_protected')[0]['data-key']
     url = decrypt_url(data, key)
