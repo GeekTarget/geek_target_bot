@@ -49,14 +49,14 @@ def get_content():
             post = get_wall(count)
             text = post[2]['text']
             date = post[2]['date']
-            image = post[2]['attachments'][0]['photo']['sizes'][8]['url']
+            image = post[2]['attachments'][0]['photo']['sizes'][6]['url']
             url = 'https://vk.com/hdkinoha?w=wall-80207939_' + str(num)
             return text
         else:
             num += 1
             text = post[1]['text']
             date = post[1]['date']
-            image = post[1]['attachments'][0]['photo']['sizes'][8]['url']
+            image = post[1]['attachments'][0]['photo']['sizes'][6]['url']
             url = 'https://vk.com/hdkinoha?w=wall-80207939_' + str(num)
             return text
     """ Если 1 запись не закреплена """
@@ -64,7 +64,7 @@ def get_content():
     num += 1
     text = post[0]['text']
     date = post[0]['date']
-    image = post[0]['attachments'][0]['photo']['sizes'][8]['url']
+    image = post[0]['attachments'][0]['photo']['sizes'][6]['url']
     url = 'https://vk.com/hdkinoha?w=wall-80207939_' + str(num)
     return text
 
