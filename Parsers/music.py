@@ -42,7 +42,7 @@ def get_main():
     global r
     r = requests.get('https://ru.sefon.cc/news/', headers=HEADERS)
     soup = BeautifulSoup(r.text, 'lxml')
-    new_music = soup.find('div', class_="b_list_mp3s _ ").find('div', class_='mp3')
+    new_music = soup.find('div class_="b_list_mp3s _ "').find('div', class_='mp3')
     return new_music
 
 
