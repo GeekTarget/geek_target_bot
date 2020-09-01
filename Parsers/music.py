@@ -47,7 +47,7 @@ def get_main():
 
 def get_content():
     music = get_main()
-    root = BeautifulSoup(r.content, 'html.parser')
+    root = BeautifulSoup(r.content, 'lxml')
     data = root.select('.url_protected')[0]['data-url']
     key = root.select('.url_protected')[0]['data-key']
     url = decrypt_url(data, key)
