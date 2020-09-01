@@ -62,8 +62,7 @@ def get_content():
 
 
 def get_id():
-    music = get_main()
-    id = music.get('data-mp3_id')
+    id = get_main().get('data-mp3_id')
     return id
 
 # while True:
