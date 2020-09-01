@@ -16,7 +16,6 @@ PySide2==5.15.0
 PySocks==1.7.1
 pyTelegramBotAPI==3.6.7
 pyttsx3==2.87
-pywin32==228
 pywin32-ctypes==0.2.0
 requests==2.23.0
 shiboken2==5.15.0
