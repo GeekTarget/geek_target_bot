@@ -66,73 +66,89 @@ async def get_information(message: types.Message):
     await message.answer(text)
 
 
-# Function for News mailing
+# Function for News 
 async def rambler_news_get():
     while True:
-        news_subs = set()
-        for s in base.show_subscribers():
-            if 'News📝' in base.show_subs(s[0]):
-                news_subs.add(s[0])
-        id = RamblerNews.get_id()
-        if RamblerNews.get_file_id('news.txt') == id:
-            await asyncio.sleep(uniform(60, 300))
-        else:
-            RamblerNews.write_id(id,'news.txt')
-            # RamblerNews.Id = RamblerNews.get_id()
-            for s in news_subs:
-                await bot.send_message(chat_id=s, text=RamblerNews.get_content())
+        try:
+            news_subs = set()
+            for s in base.show_subscribers():
+                if 'News📝' in base.show_subs(s[0]):
+                    news_subs.add(s[0])
+            id = RamblerNews.get_id()
+            if RamblerNews.get_file_id('news.txt') == id:
+                await asyncio.sleep(uniform(60, 300))
+            else:
+                RamblerNews.write_id(id, 'news.txt')
+                # RamblerNews.Id = RamblerNews.get_id()
+                for s in news_subs:
+                    await bot.send_message(chat_id=s, text=RamblerNews.get_content())
+        except:
+            print('Error')
+            await asyncio.sleep(1800)
 
 
-# Function for Game mailing
+# Function for Game 
 async def igromania_get():
     while True:
-        game_subs = set()
-        for s in base.show_subscribers():
-            if 'Games🎮' in base.show_subs(s[0]):
-                game_subs.add(s[0])
-        url = Igromania.get_url()
-        if Igromania.get_file_url('igromania.txt') == url:
-            await asyncio.sleep(uniform(600, 800))
-        else:
-            Igromania.write_url('igromania.txt',url)
-            for s in game_subs:
-                await bot.send_message(chat_id=s, text=Igromania.get_content() + Igromania.get_url())
+        try:
+            game_subs = set()
+            for s in base.show_subscribers():
+                if 'Games🎮' in base.show_subs(s[0]):
+                    game_subs.add(s[0])
+            url = Igromania.get_url()
+            if Igromania.get_file_url('igromania.txt') == url:
+                await asyncio.sleep(uniform(600, 800))
+            else:
+                Igromania.write_url('igromania.txt', url)
+                for s in game_subs:
+                    await bot.send_message(chat_id=s, text=Igromania.get_content() + Igromania.get_url())
+        except:
+            print('Error')
+            await asyncio.sleep(1800)
 
 
-# Function for Habr mailing
+# Function for Habr 
 async def habr_get():
     while True:
-        habr_subs = set()
-        for s in base.show_subscribers():
-            if 'Habr-IT blog💻' in base.show_subs(s[0]):
-                habr_subs.add(s[0])
-        id = habr.get_id()
-        if habr.get_file_id('habr.txt') == id:
-            await asyncio.sleep(uniform(400, 600))
-        else:
-            habr.write_id('habr.txt',id)
-            for s in habr_subs:
-                await bot.send_message(chat_id=s, text=habr.get_content())
+        try:
+            habr_subs = set()
+            for s in base.show_subscribers():
+                if 'Habr-IT blog👨‍💻' in base.show_subs(s[0]):
+                    habr_subs.add(s[0])
+            id = habr.get_id()
+            if habr.get_file_id('habr.txt') == id:
+                await asyncio.sleep(uniform(400, 600))
+            else:
+                habr.write_id('habr.txt', id)
+                for s in habr_subs:
+                    await bot.send_message(chat_id=s, text=habr.get_content())
+        except:
+            print('Error')
+            await asyncio.sleep(1800)
 
 
-# Function for Film mailing
+# Function for Film 
 async def new_film_get():
     while True:
-        films_sub = set()
-        for s in base.show_subscribers():
-            if 'Films🎬' in base.show_subs(s[0]):
-                films_sub.add(s[0])
-        NewFilmVK.get_content()
-        if NewFilmVK.get_file_date('films.txt') == str(NewFilmVK.date):
-            await asyncio.sleep(uniform(1800, 3600))
-        else:
-            NewFilmVK.write_date('films.txt',NewFilmVK.date)
-            for s in films_sub:
-                await bot.send_photo(chat_id=s, photo=NewFilmVK.image,
-                                     caption=NewFilmVK.get_content() + 'Смотреть →' + NewFilmVK.url)
+        try:
+            films_sub = set()
+            for s in base.show_subscribers():
+                if 'Films🎬' in base.show_subs(s[0]):
+                    films_sub.add(s[0])
+            NewFilmVK.get_content()
+            if NewFilmVK.get_file_date('films.txt') == str(NewFilmVK.date):
+                await asyncio.sleep(uniform(1800, 3600))
+            else:
+                NewFilmVK.write_date('films.txt', NewFilmVK.date)
+                for s in films_sub:
+                    await bot.send_photo(chat_id=s, photo=NewFilmVK.image,
+                                         caption=NewFilmVK.get_content() + 'Смотреть →' + NewFilmVK.url)
+        except:
+            print('Error')
+            await asyncio.sleep(1800)
 
 
-# Function for Music mailing
+# Function for Music 
 async def get_new_music():
     while True:
         music_subs = set()
