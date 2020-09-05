@@ -111,20 +111,16 @@ async def igromania_get():
 async def habr_get():
     while True:
         try:
-            print('Start')
             habr_subs = set()
             for s in base.show_subscribers():
                 if 'Habr-IT blog💻' in base.show_subs(s[0]):
                     habr_subs.add(s[0])
             id = habr.get_id()
             if habr.get_file_id('habr.txt') == id:
-                print('No')
                 await asyncio.sleep(uniform(400, 600))
             else:
-                print('Yes')
                 habr.write_id('habr.txt', id)
                 for s in habr_subs:
-                    print(s)
                     await bot.send_message(chat_id=s, text=habr.get_content())
         except:
             print('Error')
