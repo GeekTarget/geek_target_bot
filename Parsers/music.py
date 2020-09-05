@@ -1,5 +1,5 @@
 import base64
-import urllib.requests
+import urllib3
 from bs4 import BeautifulSoup
 
 Id = '402480'
@@ -39,9 +39,10 @@ def decrypt_url(data: str, key: str) -> str:
 
 def get_main():
     global r
-    response = urllib.requests.urlopen('https://ru.sefon.cc/news/')
+    http = urllib3.PoolManager()
+    r = http.request('GET', 'https://ru.sefon.cc/news/')
     #r = requests.get('https://ru.sefon.cc/news/', headers=HEADERS)
-    print(response)
+    print(r.text)
     soup = BeautifulSoup(response.text, 'html.parser')
     print(soup)
     new_music = soup.find('div', class_="b_list_mp3s _").find('div', class_='mp3')
