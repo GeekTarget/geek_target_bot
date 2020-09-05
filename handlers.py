@@ -114,7 +114,7 @@ async def habr_get():
             print('Start')
             habr_subs = set()
             for s in base.show_subscribers():
-                if 'Habr-IT blog👨‍💻' in base.show_subs(s[0]):
+                if 'Habr-IT blog💻' in base.show_subs(s[0]):
                     habr_subs.add(s[0])
             id = habr.get_id()
             if habr.get_file_id('habr.txt') == id:
@@ -124,6 +124,7 @@ async def habr_get():
                 print('Yes')
                 habr.write_id('habr.txt', id)
                 for s in habr_subs:
+                    print(s)
                     await bot.send_message(chat_id=s, text=habr.get_content())
         except:
             print('Error')
