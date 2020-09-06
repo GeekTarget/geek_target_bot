@@ -1,5 +1,5 @@
 import base64
-import urllib3
+import requests
 from bs4 import BeautifulSoup
 
 Id = '402480'
@@ -39,9 +39,7 @@ def decrypt_url(data: str, key: str) -> str:
 
 def get_main():
     global r
-    http = urllib3.PoolManager()
-    r = http.request('GET', 'https://ru.sefon.cc/news/')
-    #r = requests.get('https://ru.sefon.cc/news/', headers=HEADERS)
+    r = requests.get('https://ru.sefon.cc/news/')
     print(r.text)
     soup = BeautifulSoup(r.text, 'html.parser')
     print(soup)
