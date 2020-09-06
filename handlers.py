@@ -149,16 +149,31 @@ async def new_film_get():
 
 
 # Function for Music 
+# async def get_new_music():
+#     while True:
+#         music_subs = set()
+#         for s in base.show_subscribers():
+#             if 'Musics🎵' in base.show_subs(s[0]):
+#                 music_subs.add(s[0])
+#         id = music.get_id()
+#         if music.get_file_id('music.txt') == id:
+#             await asyncio.sleep(uniform(300, 500))
+#         else:
+#             music.write_id('music.txt',id)
+#             for s in music_subs:
+#                 await bot.send_message(chat_id=s, text=music.get_content())
+
+
 async def get_new_music():
     while True:
         music_subs = set()
         for s in base.show_subscribers():
             if 'Musics🎵' in base.show_subs(s[0]):
                 music_subs.add(s[0])
-        id = music.get_id()
-        if music.get_file_id('music.txt') == id:
+        status = mus.get_status()
+        if mus.Status == status:
             await asyncio.sleep(uniform(300, 500))
         else:
-            music.write_id('music.txt',id)
+            mus.Status = status
             for s in music_subs:
-                await bot.send_message(chat_id=s, text=music.get_content())
+                 await bot.send_message(chat_id=s, text='Подписка Musics🎵' + '\n' + 'Новый трек: ' + mus.get_content())
