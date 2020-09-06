@@ -4,15 +4,17 @@ from bs4 import BeautifulSoup
 
 Id = '402480'
 HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-    'Accept-Encoding': 'gzip, deflate',
-    'Accept-Language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
-    'Cache-Control': 'max-age=0',
-    'Connection': 'keep-alive',
-    'Cookie': '_ym_d=1598363041; _ym_uid=1598363041163280418',
-    'Host': 'm.sefon.cc',
-    'Upgrade-Insecure-Requests': '1'
+    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+    'accept-encoding': 'gzip, deflate, br',
+    'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
+    'cache-control': 'max-age=0',
+    'cookie': '_ym_d=1598363041; _ym_uid=1598363041163280418; _ym_visorc_44060479=b; _ym_isad=2; _ym_visorc_26812653=b',
+    'sec-fetch-dest': 'document',
+    'sec-fetch-mode': 'navigate',
+    'sec-fetch-site': 'none',
+    'sec-fetch-user': '?1',
+    'upgrade-insecure-requests': '1',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36'
 }
 
 
@@ -40,10 +42,7 @@ def decrypt_url(data: str, key: str) -> str:
 def get_main():
     global r
     r = requests.get('https://ru.sefon.cc/news/',headers=HEADERS)
-    session = requests.Session()
-    req = session.get('https://ru.sefon.cc/news/',headers=HEADERS)
-    print(req)
-    soup = BeautifulSoup(req.text, 'html.parser')
+    soup = BeautifulSoup(r.text, 'html.parser')
     print(soup)
     new_music = soup.find('div', class_="b_list_mp3s _").find('div', class_='mp3')
     return new_music
