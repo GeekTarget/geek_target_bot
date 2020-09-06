@@ -1,15 +1,16 @@
 import requests
 from bs4 import BeautifulSoup
 
+global Id
+Id = 0
+# def write_id(id, filename):
+#     with open(filename, 'w') as file:
+#         file.write(id)
 
-def write_id(id, filename):
-    with open(filename, 'w') as file:
-        file.write(id)
 
-
-def get_file_id(filename):
-    file_id = open(filename, 'r').read()
-    return file_id
+# def get_file_id(filename):
+#     file_id = open(filename, 'r').read()
+#     return file_id
 
 
 HEADERS = {
