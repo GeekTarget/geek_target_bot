@@ -39,7 +39,7 @@ def decrypt_url(data: str, key: str) -> str:
 
 def get_main():
     global r
-    r = requests.get('https://ru.sefon.cc/news/')
+    r = requests.get('https://ru.sefon.cc/news/',headers=HEADERS)
     print(r.text)
     soup = BeautifulSoup(r.text, 'html.parser')
     print(soup)
