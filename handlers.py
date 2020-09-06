@@ -75,10 +75,10 @@ async def rambler_news_get():
                 if 'News📝' in base.show_subs(s[0]):
                     news_subs.add(s[0])
             id = RamblerNews.get_id()
-            if RamblerNews.get_file_id('news.txt') == id:
+            if RamblerNews.Id == id:
                 await asyncio.sleep(uniform(60, 300))
             else:
-                RamblerNews.write_id(id, 'news.txt')
+                RamblerNews.Id = id
                 # RamblerNews.Id = RamblerNews.get_id()
                 for s in news_subs:
                     await bot.send_message(chat_id=s, text=RamblerNews.get_content())
