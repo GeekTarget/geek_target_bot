@@ -6,6 +6,7 @@ Status = 0
 
 def get_main():
     r = requests.get('https://r.mp3xa.fm/novinki/page/1/')
+    print(r)
     soup = BeautifulSoup(r.text,'html.parser')
     music = soup.find('div',class_='plyr-item')
     return music
