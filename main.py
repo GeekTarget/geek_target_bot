@@ -3,6 +3,7 @@ from aiogram import Bot, Dispatcher, executor
 import config
 import handlers
 import asyncio
+import requests
 
 # Main variable
 logging.basicConfig(level=logging.INFO)
@@ -12,7 +13,8 @@ dp = Dispatcher(bot)
 # Running bot
 if __name__ == '__main__':
     from handlers import dp
-    dp.loop.create_task(handlers.get_new_music())
+    print(requests.get('https://music.yandex.ru/new-releases'))
+#     dp.loop.create_task(handlers.get_new_music())
 #     dp.loop.create_task(handlers.new_film_get())
 #     dp.loop.create_task(handlers.rambler_news_get())
 #     dp.loop.create_task(handlers.igromania_get())
