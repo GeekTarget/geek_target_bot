@@ -14,6 +14,8 @@ dp = Dispatcher(bot)
 if __name__ == '__main__':
     from handlers import dp
     print(requests.get('https://music.yandex.ru/new-releases'))
+    print('-------------------------------------------------------')
+    print(requests.get('https://ru.sefon.cc/news/'))
 #     dp.loop.create_task(handlers.get_new_music())
 #     dp.loop.create_task(handlers.new_film_get())
 #     dp.loop.create_task(handlers.rambler_news_get())
