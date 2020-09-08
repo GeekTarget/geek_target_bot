@@ -148,7 +148,6 @@ async def new_film_get():
             await asyncio.sleep(1800)
 
 
-# Function for Music 
 # async def get_new_music():
 #     while True:
 #         music_subs = set()
@@ -164,7 +163,7 @@ async def new_film_get():
 #                 await bot.send_message(chat_id=s, text=music.get_content())
 
 
-async def get_new_music():
+#async def get_new_music():
     while True:
         music_subs = set()
         for s in base.show_subscribers():
