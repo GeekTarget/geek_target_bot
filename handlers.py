@@ -7,7 +7,7 @@ from aiogram.types import CallbackQuery
 
 import config
 from Datebase import DateBase
-from Parsers import RamblerNews, Igromania, habr, NewFilmVK, mus
+from Parsers import RamblerNews, Igromania, habr, NewFilmVK
 from main import dp, bot
 from Keyboard import keyboards
 
