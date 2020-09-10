@@ -69,18 +69,23 @@ async def get_information(message: types.Message):
 # Function for News mailing
 async def rambler_news_get():
     while True:
-        news_subs = set()
-        for s in base.show_subscribers():
-            if 'News📝' in base.show_subs(s[0]):
-                news_subs.add(s[0])
-        id = RamblerNews.get_id()
-        if RamblerNews.Id == id:
-            await asyncio.sleep(uniform(60, 300))
-        else:
-            RamblerNews.Id = id
-            # RamblerNews.Id = RamblerNews.get_id()
-            for s in news_subs:
-                await bot.send_message(chat_id=s, text='Подписка News📝\n'+RamblerNews.get_content())
+        try:
+            news_subs = set()
+            for s in base.show_subscribers():
+                if 'News📝' in base.show_subs(s[0]):
+                    news_subs.add(s[0])
+            id = RamblerNews.get_id()
+            if RamblerNews.Id == id:
+                await asyncio.sleep(uniform(60, 300))
+            else:
+                RamblerNews.Id = id
+                # RamblerNews.Id = RamblerNews.get_id()
+                for s in news_subs:
+                    await bot.send_message(chat_id=s, text='Подписка News📝\n'+RamblerNews.get_content())
+        except:
+            print('Error')
+            await asyncio.sleep(1800)
+
 
 
 # Function for Game mailing
