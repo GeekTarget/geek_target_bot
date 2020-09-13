@@ -111,7 +111,7 @@ async def habr_get():
     while True:
         habr_subs = set()
         for s in base.show_subscribers():
-            if 'Habr-IT blog👨‍💻' in base.show_subs(s[0]):
+            if 'Habr-IT blog💻' in base.show_subs(s[0]):
                 habr_subs.add(s[0])
         try:
             id = habr.get_id()
@@ -120,7 +120,7 @@ async def habr_get():
             else:
                 habr.write_id('habr.txt', id)
                 for s in habr_subs:
-                    await bot.send_message(chat_id=s, text='Подписка Habr-IT blog👨‍💻\n'+habr.get_content())
+                    await bot.send_message(chat_id=s, text='Подписка Habr-IT blog💻\n'+habr.get_content())
         except:
             print('Error')
             await asyncio.sleep(1800)
