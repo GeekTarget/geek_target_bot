@@ -65,15 +65,14 @@ async def get_information(message: types.Message):
     text = config.text
     await message.answer(text)
 
-
 # Function for News mailing
 async def rambler_news_get():
     while True:
+        news_subs = set()
+        for s in base.show_subscribers():
+            if 'News📝' in base.show_subs(s[0]):
+                news_subs.add(s[0])
         try:
-            news_subs = set()
-            for s in base.show_subscribers():
-                if 'News📝' in base.show_subs(s[0]):
-                    news_subs.add(s[0])
             id = RamblerNews.get_id()
             if RamblerNews.Id == id:
                 await asyncio.sleep(uniform(60, 300))
@@ -87,15 +86,14 @@ async def rambler_news_get():
             await asyncio.sleep(1800)
 
 
-
 # Function for Game mailing
 async def igromania_get():
     while True:
+        game_subs = set()
+        for s in base.show_subscribers():
+            if 'Games🎮' in base.show_subs(s[0]):
+                game_subs.add(s[0])
         try:
-            game_subs = set()
-            for s in base.show_subscribers():
-                if 'Games🎮' in base.show_subs(s[0]):
-                    game_subs.add(s[0])
             url = Igromania.get_url()
             if Igromania.get_file_url('igromania.txt') == url:
                 await asyncio.sleep(uniform(600, 800))
@@ -111,18 +109,18 @@ async def igromania_get():
 # Function for Habr mailing
 async def habr_get():
     while True:
+        habr_subs = set()
+        for s in base.show_subscribers():
+            if 'Habr-IT blog👨‍💻' in base.show_subs(s[0]):
+                habr_subs.add(s[0])
         try:
-            habr_subs = set()
-            for s in base.show_subscribers():
-                if 'Habr-IT blog💻' in base.show_subs(s[0]):
-                    habr_subs.add(s[0])
             id = habr.get_id()
             if habr.get_file_id('habr.txt') == id:
                 await asyncio.sleep(uniform(400, 600))
             else:
                 habr.write_id('habr.txt', id)
                 for s in habr_subs:
-                    await bot.send_message(chat_id=s, text='Подписка Habr-IT blog💻\n'+habr.get_content())
+                    await bot.send_message(chat_id=s, text='Подписка Habr-IT blog👨‍💻\n'+habr.get_content())
         except:
             print('Error')
             await asyncio.sleep(1800)
@@ -130,11 +128,11 @@ async def habr_get():
 # Function for Film mailing
 async def new_film_get():
     while True:
+        films_sub = set()
+        for s in base.show_subscribers():
+            if 'Films🎬' in base.show_subs(s[0]):
+                films_sub.add(s[0])
         try:
-            films_sub = set()
-            for s in base.show_subscribers():
-                if 'Films🎬' in base.show_subs(s[0]):
-                    films_sub.add(s[0])
             NewFilmVK.get_content()
             if NewFilmVK.get_file_date('films.txt') == str(NewFilmVK.date):
                 await asyncio.sleep(uniform(1800, 3600))
@@ -163,14 +161,15 @@ async def new_film_get():
 #             for s in music_subs:
 #                 await bot.send_message(chat_id=s, text=music.get_content())
 
+
 # Function for Music mailing
 async def get_new_music():
     while True:
+        music_subs = set()
+        for s in base.show_subscribers():
+            if 'Musics🎵' in base.show_subs(s[0]):
+                music_subs.add(s[0])
         try:
-            music_subs = set()
-            for s in base.show_subscribers():
-                if 'Musics🎵' in base.show_subs(s[0]):
-                    music_subs.add(s[0])
             status = mus.get_status()
             if mus.Status == status:
                 await asyncio.sleep(uniform(1800, 2700))
@@ -181,5 +180,3 @@ async def get_new_music():
         except:
             print('Error')
             await asyncio.sleep(3600)
-
-
